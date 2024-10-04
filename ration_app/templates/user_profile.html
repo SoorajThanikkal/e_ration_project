@@ -1,0 +1,113 @@
+{% load static %}
+<html>
+    <head>
+      <title>User Profile</title>
+      <style>
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0);
+          max-width: 300px;
+          margin: auto;
+          text-align: center;
+          padding: 8px;
+          font-family: arial;
+          background-color: rgba(240, 248, 255, 0.689);
+          
+        }
+        
+        .title {
+          color: rgb(20, 19, 19);
+          font-size: 18px;
+        }
+
+        body{
+  background-image: url("{% static 'images\demo\bg.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+        }
+        
+        button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px;
+          color: white;
+          background-color: #000000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+          
+        }
+        
+        input[type=submit]{
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px;
+          color: white;
+          background-color: #000000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+        }
+
+        a {
+          text-decoration: none;
+          font-size: 18px;
+          color: white;
+          
+        }
+
+        p{
+          
+            color: rgb(7, 1, 1);
+            font-variant: small-caps ;
+        }
+
+        h2 {
+          color: white;
+          font-size: 200%;
+          font-variant: small-caps ;
+          }
+
+        h1{
+          font-variant: small-caps ;
+        }
+
+        button:hover, a:hover {
+          opacity: 0.7;
+        }
+        </style>
+      </head>
+   <body> 
+
+      <!-- form section start -->   
+      <!-- <div class="wrapper bgded overlay" >
+        <img src="{% static 'images\demo\backgrounds\ration.webp' %}" alt="">-->
+
+        <h2 style="text-align:center">PROFILE<br>ഉപയോക്താവ് വിശദാംശങ്ങൾ</h2>
+        
+        <div class="card">
+          <img src="/media/{{image}}"  style="width:100%">
+          <h1>{{name}}</h1><b>
+          <p class="title">card No : {{cardno}} ( {{card}} )</p>
+          <p>Contact No : {{contact}}</p>
+          <p>Address : {{address}}</p></b>
+          <br>
+          <!-- <p><button><a class="nav-link" href="/index"> LOGOUT</a></button></p> -->
+          <form action="/edit_profile" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="EDIT PROFILE">
+          </form>
+          <button><a href="/user_home">BACK</a></button>
+          <!-- <button><a class="nav-link" href="/edit_profile"> EDIT PROFILE</a></button></p>  -->
+        </div>
+
+   </body>
+</html>
+
+
+
+

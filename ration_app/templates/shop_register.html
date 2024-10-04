@@ -1,0 +1,137 @@
+{% load static %}
+<html>
+    <head>
+      <title>Shop Owner Registration</title>
+            <style>
+
+    table,th,td{
+          padding:20px;
+          }
+    form{
+          border:1px solid #6f8d926c;
+          padding:10px;
+          margin:20px;
+  background-image: url("{% static 'images\demo\bg.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: scroll;  
+  background-size:cover;
+                  }
+  
+    input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color:rgba(255, 255, 255, 0.851);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color:#f09d5e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  button{
+    width: 40%;
+    background-color:#f09d5e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+
+  input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color:rgba(255, 255, 255, 0.851);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  a {
+          text-decoration: none;
+          font-size: 18px;
+          color: white;
+          
+        }
+  input[type=email] {
+    width: 100%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  h1{
+   color: white;
+   font-size: 200%;
+  }
+         </style>
+      </head>
+   <body>
+      <!-- form section start -->
+              <form action="/shop_register/" method="post">
+                  {% csrf_token %}
+                  <center>
+                      <table>
+                          <b><h1>SHOP OWNER REGISTRATION FORM<br>ഉടമസ്ഥൻ രജിസ്ട്രേഷൻ ഫോം</h1></b>
+                          <tr> 
+                             
+                             <td><input type="text" name="rfname" placeholder="Enter Your Name" ></td>
+                          </tr>
+                         
+                          <tr>
+                             
+                             <td><input type="text" name="raddress" placeholder="Enter Your Addess" ></td>
+                          </tr>
+                         
+                          <tr>
+                            
+                             <td><input type="text" name="rcontact" placeholder="Enter Your Phone Number" ></td>
+                          </tr>
+                          
+                          <tr>
+                             
+                             <td><input type="text" name="rnum" placeholder="Enter Shop License Number" ></td>
+                          </tr>
+                          
+                          <tr>
+                            
+                             <td><input type="password" name="rpass" placeholder="Enter Your Password"></td>
+                          </tr>
+      
+                          <tr>
+                             <th><input type="submit" value="Register"></th>
+                          </tr>
+      
+                          <tr>
+                           <th><button><a href="/index">BACK</a></button></th>
+                          </tr>
+
+                       </table> 
+                  </center>
+              </form>
+   </body>
+</html>

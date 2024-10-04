@@ -1,0 +1,88 @@
+{% load static %}
+<html>
+<head>
+    <title>Products List</title>
+    <style>
+        table, th, td {
+            padding: 10px;
+            font-size: larger;
+            font-variant: small-caps;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            height: 80%;
+        }
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: rgb(10, 9, 9);
+        }
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 10px;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.527);
+            text-align: center;
+            cursor: pointer;
+            width: 70%;
+            font-size: 18px;
+        }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }  
+        th, td {
+            text-align: center;
+            padding: 25px;
+        }
+        tr {
+            background-color: #ebedefcb;
+        }
+        body {
+            background-image: url("{% static 'images/demo/bg.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
+        }
+        h2 {
+            color: white;
+            font-size: 200%;
+            font-variant: small-caps;
+        }
+    </style>
+</head>
+<body>
+    <center><h2>products details<br>ഉൽപ്പന്നങ്ങളുടെ വിശദാംശങ്ങൾ</h2></center>
+    <table border="1" align="center">
+        <tr>
+            <th>LICENSE</th>
+            <th>IMAGE</th>
+            <th>NAME</th>
+            <th>APL</th>
+            <th>BPL</th>
+            <th>AY</th>
+            <th>PRICE</th>
+            <th>ORDER</th>
+        </tr>  
+        {% for i in data %}
+        <tr>
+            <td>{{ i.license }}</td>
+            <td><img src="{{ i.image.url }}" height="100" width="100"></td>
+            <td>{{ i.name }}</td>
+            <td>{{ i.apl }}</td>
+            <td>{{ i.bpl }}</td>
+            <td>{{ i.ay }}</td>
+            <td>{{ i.price }}</td>
+            <td><a href="{% url 'addtocart' i.id %}">Add to Cart</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <center>
+        <button><a href="{% url 'shops_view' %}">BACK</a></button>
+    </center>
+</body>
+</html>

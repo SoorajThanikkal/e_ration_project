@@ -1,0 +1,158 @@
+{% load static %}
+<html>
+    <head>
+      <title>Add Products</title>
+            <style>
+
+    table,th,td{
+          padding:20px;
+          }
+    form{
+          border:1px solid #6f8d926c;
+          padding:10px;
+          margin:20px;
+  background-image: url("{% static 'images\demo\bg.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+                  }
+  
+    input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color:rgba(255, 255, 255, 0.851);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #f09d5e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    background-color:rgba(255, 255, 255, 0.851);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  input[type=email] {
+    width: 100%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  h1{
+   color: white;
+   font-size: 200%;
+  }
+  a {
+          text-decoration: none;
+          font-size: 18px;
+          color: white;
+          
+        }
+
+  button{
+    width: 40%;
+    background-color: #f09d5e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+         </style>
+      </head>
+   <body>
+      <!-- form section start -->
+              <form action="/update_product/" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <center>
+                    <b><h1>EDIT PRODUCTS<br>ഉൽപ്പന്നങ്ങളുടെ രജിസ്ട്രേഷൻ ഫോം</h1></b>
+
+                      <table>
+
+                          <tr> 
+                             
+                           <td><input type="text" name="license" value={{license}} readonly ></td>
+                        </tr>
+                        <tr> 
+                             
+                            <td><input type="text" name="id" value={{id}} readonly ></td>
+                         </tr>
+                          <tr> 
+                             
+                             <td><input type="text" name="name" value={{a}} placeholder="Enter Product Name" ></td>
+                          </tr>
+                         
+                          <tr>
+                            
+                            <td><input type="text" name="apl" value={{b}} placeholder="Enter Quantity (APL) " ></td>
+                         </tr>
+                         
+                          <tr>
+                            
+                             <td><input type="text" name="bpl" value={{c}} placeholder="Enter Quantity (BPL)" ></td>
+                          </tr>
+                          <tr>
+                            
+                            <td><input type="text" name="ay" value={{d}} placeholder="Enter Quantity (AY)" ></td>
+                         </tr>
+                        
+                          <tr>
+                            
+                            <td><input type="text" name="stock"  value={{e}} placeholder="Enter The Stock" ></td>
+                         </tr>
+
+                          <tr>
+                            
+                            <td><input type="text" name="price" value={{f}} placeholder="Enter Your Price" ></td>
+                         </tr>
+
+                          <!-- <tr>
+                            <td><select name="pstatus">
+                                <option value="in stock">in stock</option>
+                                <option value="out of stock">out of stock</option>
+                                </select></td>
+                         </tr> -->
+                          
+                          <tr>
+                             <th><input type="submit" value="Register"></th>
+                          </tr>
+      
+                          <tr>
+                           <th><button><a href="/shop_home">BACK</a></button></th>
+                          </tr>
+
+                       </table> 
+                  </center>
+              </form>
+   </body>
+</html>

@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <style>
+        body {
+            background-image: url("{% static 'images/demo/bg.jpg' %}");
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #444;
+        }
+        tr:nth-child(even) {
+            background-color: #555;
+        }
+        tr:nth-child(odd) {
+            background-color: #666;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+        }
+        .total {
+            font-size: 1.5rem;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a, .btn {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            background-color: #28a745;
+            border-radius: 5px;
+            border: none; /* Removes border */
+            font-size: 1rem; /* Adjusts font size */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        }
+        a:hover, .btn:hover {
+            background-color: #218838;
+            transform: scale(1.05); /* Slightly enlarges the button on hover */
+        }
+        .btn {
+            cursor: pointer; /* Changes cursor to pointer */
+            margin-left: 10px; /* Adds space between links */
+        }
+    </style>
+</head>
+<body>
+    <h2>My Cart</h2>
+    <table border="1">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+        {% for item in cart_items %}
+        <tr>
+            <td><img src="{{ item.product.image.url }}" height="100" width="100" alt="{{ item.product.name }}"></td>
+            <td>{{ item.product.name }}</td>
+            <td>₹{{ item.product.price|floatformat:2 }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>₹{{ item.product.price|floatformat:2 }} x {{ item.quantity }}</td> <!-- Remove the multiply filter -->
+            <td><a href="/delete_record/{{item.id }}">Remove</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div class="total">
+        <strong>Total Price: ₹{{ total_price|floatformat:2 }}</strong>
+    </div>
+    
+    <div class="button-container">
+        <a href="/user_home/">Continue Shopping</a>
+        <form action="{% url 'buy_product' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="total_amount" value="{{ total_price }}"><br>
+            <button type="submit" class="btn">Proceed to Pay</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+{% load static %}
+<html>
+    <head>
+      <title>View Orders</title>
+        <style>
+             table,
+    th,
+    td {
+        padding: 10px;
+        font-size: larger;
+        font-variant: small-caps ;
+    }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        height: 80%;
+    }
+    table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  
+}  
+    th, td {
+        text-align: center;
+        padding: 2px;
+    }
+      
+    tr {
+      background-color: #ebedefcb;
+    }
+            body{
+  background-image: url("{% static 'images\demo\bg.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+        }
+        h2 {
+            color: white;
+            font-size: 200%;
+            font-variant: small-caps ;
+          }
+          a {
+          text-decoration: none;
+          font-size: 18px;
+          color: rgb(10, 10, 10);
+          
+        }
+
+    button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px;
+          color: white;
+          background-color:rgba(255, 255, 255, 0.527);
+          text-align: center;
+          cursor: pointer;
+          width: 70%;
+          font-size: 18px;
+          
+        }
+        </style>
+    </head>
+    <body>
+        <center><h2>VIEW ORDERS<br>ഉൽപ്പന്നങ്ങളുടെ വിശദാംശങ്ങൾ</h2></center>
+        <table border="1" align="center">
+          <tr>
+            <th>NAME</th>
+            <th>CARD</th>
+            <th>APL/BPL/AY</th>
+            <th>PRODUCT</th>
+     
+
+            <!-- <th>STATUS</th> -->
+          </tr>  
+          {% for i in data %}
+          <tr>
+            <td>{{i.user.fullname}}</td>
+            <td>{{i.user.cardno}}</td>
+            <td>{{i.user.card}}</td>
+            <td>{{i.pro.proname}}</td>
+         
+
+            <!-- <td>{{i.status}}</td> -->
+            {% endfor %}
+          </tr>
+        </table>
+        <br>
+        <center><button><a href="/shop_home">BACK</a></button></center>
+    </body>
+</html>
+

@@ -1,0 +1,216 @@
+{% load static %}
+<html>
+    <head>
+      <title>Shop Owner Profile</title>
+      <style>
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          max-width: 250px;
+          margin: auto;
+          text-align: center;
+          font-family: arial;
+          background-color: white;
+        }
+        
+        .title {
+          color: grey;
+          font-size: 18px;
+        }
+
+        body{
+  background-image: url("{% static 'images\demo\bg.jpg' %}" );
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+        }
+        
+        button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #000;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 18px;
+        }
+        
+        a {
+          text-decoration: none;
+          font-size: 22px;
+          color: rgb(107, 96, 96);
+        }
+
+        h2 {
+            font-size: 200%;
+            color: white;
+            font-variant: small-caps ;
+          }
+          h1{
+            font-variant: small-caps ;
+            color: rgb(13, 13, 13);
+            font-size: 200%;
+          }
+        
+        button:hover, a:hover {
+          opacity: 0.7;
+        }
+
+        table,
+    th,
+    td {
+        padding: 10px;
+        font-size: larger;
+        font-variant: small-caps ;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        height: 50%;
+    }
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  
+}  
+    th, td {
+        text-align: center;
+        padding: 2px;
+    }
+      
+    tr {
+      background-color:rgba(255, 255, 255, 0.851);
+    }
+    .split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  /* padding-top: 20px; */
+}
+
+.left {
+  left: 0;
+  
+}
+
+.right {
+  right: 100;
+  
+}
+
+a {
+          text-decoration: none;
+          font-size: 18px;
+          color: rgb(10, 10, 10);
+          
+        }
+
+    button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px;
+          color: rgb(52, 49, 49);
+          background-color:rgba(255, 255, 255, 0.527);
+          text-align: center;
+          cursor: pointer;
+          width: 70%;
+          font-size: 18px;
+          
+        }
+        /* input[type=submit]{
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px;
+          color: rgb(52, 49, 49);
+          background-color:rgba(255, 255, 255, 0.527);
+          text-align: center;
+          cursor: pointer;
+          width: 70%;
+          font-size: 18px;
+          
+        } */
+        
+        </style>
+      </head>
+   <body>
+      <!-- form section start -->   
+      <!-- <div class="wrapper bgded overlay" >
+        <img src="{% static 'images\demo\backgrounds\ration.webp' %}" alt=""> -->
+        
+        <div class="split left">
+          <h2 style="text-align:center">OWNER PROFLE<br>ഉടമയുടെ വിശദാംശങ്ങൾ</h2>
+
+        <div class="card">
+          <img src="{% static 'images\demo\backgrounds\a.jpg' %}"  style="width:100%">
+          <h1>{{name}}</h1>
+          <p class="title">License No : {{cardno}}</p>
+          <p>Contact No : {{contact}}</p>
+          <p>Address : {{address}}</p>
+         
+          <p><button><a class="nav-link" href="/index"> LOGOUT</a></button></p> 
+        </div>
+        </div>
+        <div class="split right">
+          
+          <center><h2>RATION SHOP DETAILS<br>റേഷൻ കടയുടെ വിശദാംശങ്ങൾ</h2></center>
+          <br><br>
+
+       <!-- Display shop owner information -->
+<!-- ... -->
+
+<!-- Display products added by the shop owner -->
+<table border="1" align="center">
+  <tr>
+      <th>LICENSE</th>
+      <th>IMAGE</th>
+      <th>NAME</th>
+      <th>APL</th>
+      <th>BPL</th>
+      <th>AY</th>
+      <th>PRICE</th>
+      <th>STOCK</th>
+      <th>Update</th>
+  </tr>
+  {% for product in products %}
+  <tr>
+      <td>{{ product.license }}</td>
+      <td><img src="/media/{{ product.image }}" height="100" width="100"></img></td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.apl }}</td>
+      <td>{{ product.bpl }}</td>
+      <td>{{ product.ay }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.stock }}</td>
+      <td>
+        <form action="/edit_product/{{product.id}}" method="POST">
+          {% csrf_token %}
+          <input type="submit" value="EDIT PRODUCT">
+        </form>
+      </td>
+      <!-- <td><select name="pstatus">
+        <option value="{{ product.status }}">{{ product.status }}</option>
+        <option value="in stock">In Stock</option>
+        <option value="out of stock">Out Of Stock</option>
+        </select> -->
+  </tr>
+  {% endfor %}
+</table>
+<br>
+    
+ 
+    <button><a href="/shop_home">BACK</a></button></td></tr>
+   
+
+        </div>
+   </body>
+</html>
+
+
+

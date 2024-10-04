@@ -1,0 +1,150 @@
+{% load static %}
+<html>
+    <head>
+      <title>Add Shops</title>
+            <style>
+
+    table,th,td{
+          padding:20px;
+          }
+    form{
+          border:1px solid #6f8d926c;
+          padding:10px;
+          margin:20px;
+  background-image: url("{% static 'images\demo\bg.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+                  }
+  
+    input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color:rgba(255, 255, 255, 0.851);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+
+  /* input[type="file" i] {
+   appearance: none;
+    background-color: initial;
+    cursor: default;
+    align-items: baseline;
+    color: inherit;
+    text-overflow: ellipsis;
+    text-align: start !important;
+    padding: initial;
+    border: initial;
+    white-space: pre;
+    overflow: hidden !important;
+   width: 100px;
+  } */
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #f09d5e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color:rgba(255, 255, 255, 0.851);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  input[type=email] {
+    width: 100%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  h1{
+   color: white;
+   font-size: 200%;
+  }
+  a {
+          text-decoration: none;
+          font-size: 18px;
+          color: white;
+          
+        }
+
+  button{
+    width: 40%;
+    background-color: #f09d5e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+         </style>
+      </head>
+   <body>
+      <!-- form section start -->
+              <form action="/add_shop/" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <center>
+                     <b><h1>SHOP REGISTRATION FORM<br>റേഷൻ കടയുടേ രജിസ്ട്രേഷൻ ഫോം</h1></b>
+
+                      <table>
+                          <tr> 
+                             
+                             <td><input type="text" name="rlicense" value="{{lino}}" readonly ></td>
+                          </tr>
+                         
+                          
+                         
+                          <tr>
+                            
+                             <td><input type="text" name="rlocality" placeholder="Enter Shops Locality" ></td>
+                          </tr>
+                          <tr>
+                             
+                           <td><input type="file"  name="file"  placeholder="Upload Shops Image" ></td>
+                        </tr>
+                          
+                          <tr>
+                             
+                             <td><input type="text" name="rtime" placeholder="Enter Working Time" ></td>
+                          </tr>
+                          
+                          
+                          <tr>
+                             <th><input type="submit" value="Register"></th>
+                          </tr>
+      
+                          <tr>
+                           <th><button><a href="/shop_home">BACK</a></button></th>
+                          </tr>
+
+                       </table> 
+                  </center>
+              </form>
+   </body>
+</html>

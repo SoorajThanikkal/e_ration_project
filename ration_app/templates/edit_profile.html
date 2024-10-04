@@ -1,0 +1,117 @@
+{% load static %}
+<html>
+    <head>
+      <title>User Register</title>
+            <style>
+
+    table,th,td{
+          padding:20px;
+          
+          }
+        
+    form{
+          border:1px solid #6f8d926c;
+          padding:10px;
+          margin:20px;
+  background-image: url("{% static 'images\demo\grains.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+                  }
+  
+    input[type=text], select {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family:"Times New Roman";
+    font-size:150%; 
+    align-content: center;
+    align-items: center;
+  }
+  
+  input[type=submit] {
+    width: 80%;
+    background-color: #d39668;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+ 
+
+  input[type=file] {
+    width: 100%;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family:"Times New Roman";
+    font-size:150%; 
+  }
+  h1{
+   color: white;
+   font-size: 200%;
+  }
+         </style>
+      </head>
+   <body>
+      <!-- form section start -->
+              <form action="/update_profile/" method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <center>
+                      <table>
+                          <b><h1>EDIT PROFILE<br>ഉപയോക്താവ് വിശദാംശങ്ങൾ</h1></b>
+
+                          <!-- <tr> 
+             
+                           <td><input type="file" name="file" value="{{f}}" ></td>
+                        </tr> -->
+                          
+                        <tr> 
+                    
+                            <td><input type="text" name="rid" value="{{id}}" readonly></td>
+                         </tr>
+
+                          <tr> 
+                             
+                             <td><input type="text" name="rfname" value="{{a}}" ></td>
+                          </tr>
+                         
+                          <tr>
+                             
+                             <td><input type="text" name="raddress" value="{{b}}" ></td>
+                          </tr>
+                         
+                          <tr>
+                            
+                             <td><input type="text" name="rcontact" value="{{c}}" ></td>
+                          </tr>
+                          
+                          <tr>
+                             
+                             <td><input type="text" name="rnum" value="{{d}}" readonly></td>
+                          </tr>
+                          
+                          <tr>
+                           <td><input type="text" name="rcard" value="{{e}}" readonly ></td>
+                        </tr>
+      
+                          <tr>
+                             <th><input type="submit" value="Register"></th>
+                          </tr>
+      
+                       </table> 
+                  </center>
+              </form>
+   </body>
+</html>

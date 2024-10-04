@@ -1,0 +1,78 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy {{ product.name }}</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-3xl text-center text-gray-800 mb-4">Buy {{ product.name }}</h1>
+            <p class="text-center text-gray-600 mb-8">Price: ₹{{ product.total_price }}</p>
+            <!-- Adjusted image size -->
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="mx-auto mb-8 max-w-full h-auto">
+            <form action="{% url 'payment_success' %}" method="POST" class="text-center">
+                {% csrf_token %}
+                <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="{{ razorpay_key_id }}"
+                    data-amount="{{ payment.amount }}" 
+                    data-currency="INR"
+                    data-order_id="{{ payment.id }}" 
+                    data-buttontext="Buy Now"
+                    data-name="{{ product.name }}"
+                    data-description="{{ product.description }}"
+                    data-image="{{ product.image.url }}"
+                    data-prefill.email="{{ user_email }}"
+                    data-theme.color="yellow">
+                </script>
+                <input type="hidden" name="razorpay_order_id" value="{{ payment.id }}">
+                <input type="hidden" name="razorpay_payment_id" value="">
+                <input type="hidden" name="razorpay_signature" value="">
+            </form>
+        </div>
+    </div>
+</body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Purchase</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-6">
+        <div class="bg-white shadow-md rounded-lg p-8">
+            <h1 class="text-3xl text-center text-gray-800 mb-4">Complete Your Purchase</h1>
+            <p class="text-center text-gray-600 mb-8">Total Amount: ₹{{ payment.amount|floatformat:3 }}</p>
+            <form action="{% url 'payment_success' %}" method="POST" class="text-center">
+                {% csrf_token %}
+                <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="{{ razorpay_key_id }}"
+                    data-amount="{{ payment.amount }}"  <!-- Amount in paise -->
+                    data-currency="INR"
+                    data-order_id="{{ payment.id }}"  <!-- Razorpay Order ID -->
+                    data-buttontext="Pay Now"
+                    data-name="My Store"
+                    data-description="Order Payment"
+                    data-image="{{ product.image.url }}"  <!-- Optional company logo -->
+                    data-prefill.email="{{ user_email }}"
+                    data-theme.color="#F37254">
+                </script>
+                <input type="hidden" name="razorpay_order_id" value="{{ payment.id }}">
+                <input type="hidden" name="razorpay_payment_id" value="">
+                <input type="hidden" name="razorpay_signature" value="">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

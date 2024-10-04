@@ -1,0 +1,89 @@
+{% load static %}
+<html>
+    <head>
+      <title>Shops List</title>
+        <style>
+             table,
+    th,
+    td {
+        padding: 10px;
+        font-size: larger;
+        font-variant: small-caps ;
+    }
+
+    a {
+          text-decoration: none;
+          font-size: 18px;
+          color: rgb(10, 10, 10);
+          
+        }
+
+    button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px;
+          color: white;
+          background-color:rgba(255, 255, 255, 0.527);
+          text-align: center;
+          cursor: pointer;
+          width: 70%;
+          font-size: 18px;
+          
+        }
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        height: 80%;
+    }
+    table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  
+}  
+    th, td {
+        text-align: center;
+        padding: 25px;
+    }
+      
+    tr {
+      background-color: #ebedefcb;
+    }
+            body{
+  background-image: url("{% static 'images\demo\bg.jpg' %}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+        }
+        h2 {
+            color: white;
+            font-size: 200%;
+            font-variant: small-caps ;
+          }
+        </style>
+    </head>
+    <body>
+        <center><h2>RATION SHOPS DETAILS<br>റേഷൻ കടയുടെ വിശദാംശങ്ങൾ</h2></center>
+        <table border="1" align="center">
+          <tr>
+            <th>LICENSE NO</th>
+            <th>IMAGE</th>
+            <th>LOCALITY</th>
+            <th>TIME</th>
+            <th>PRODUCTS</th>
+          </tr>  
+          {% for i in data %}
+          <tr>
+            <td>{{i.license}}</td>
+            <td><img src="/media/{{i.image}}" height="100" width="100"></img></td>
+            <td>{{i.locality}}</td>
+            <td>{{i.time}}</td>
+            <td><a href="/pro_view/{{i.id}}">view products</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+        <br>
+        <center><button><a href="/user_home">BACK</a></button></center>
+    </body>
+</html>
+
